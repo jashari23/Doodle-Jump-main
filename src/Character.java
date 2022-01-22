@@ -14,7 +14,7 @@ public class Character extends JFrame {
     public Character() {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(417, 626);
-        ImageIcon icon = new ImageIcon("C:\\Users\\jjash\\Desktop\\Doodle-Jump-main\\images\\hintergrund-options.jpg");
+        ImageIcon icon = new ImageIcon("images/hintergrund-options.jpg");
         JLabel l1 = new JLabel(icon);
         frame.add(l1); // Label hinzufügen
         frame.setVisible(true);

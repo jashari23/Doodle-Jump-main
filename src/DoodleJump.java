@@ -46,7 +46,6 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
 
     public DoodleJump() {
 
-        JPanel jPanel = new JPanel();
         add(drawPanel);
         setTitle("Doodle Jump");
         setSize(D_W, D_H);
@@ -107,7 +106,6 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
     }
 
     public class DrawPanel extends JPanel {
-        private String highscore = "";
         public DrawPanel() {
 
             ActionListener listener = new ActionListener() {
@@ -138,9 +136,11 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
                         }
 
                         int count = 0;
+
                         // This make doodle to jump on the platforms and increases score
                         for (Line line : lines) {
                             if ((x > line.x && x < line.x + line.width) && (y >= line.y && y <= line.y + 10 && dy > 0)) {
+
                                 // makes sound when doodle touches the platform
                                 if (clip.isRunning() && !gameOver) {
                                     jump.setFramePosition(0);
@@ -155,17 +155,17 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
                             }
                             count++;
 
-                            if (scores >= 50) {
+                            if (scores >= 50 && scores < 70 ) {
                                 line.width = rw.nextInt(60) + 110;
 
                             }
-                            if (scores >= 70) {
+                            if (scores >= 70 && scores < 100 ) {
                                 line.width = rw.nextInt(50) + 100;
                             }
-                            if (scores >= 100) {
+                            if (scores >= 100 && scores < 120 ) {
                                 line.width = rw.nextInt(45) + 90;
                             }
-                            if (scores >= 120) {
+                            if (scores >= 120 && scores < 150 ) {
                                 line.width = rw.nextInt(40) + 80;
                             }
                             if (scores >= 150) {
@@ -179,8 +179,6 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
             };
 
             timer = new Timer(10, listener);
-
-
             timer.start();
         }
 
@@ -224,7 +222,6 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
             }
         }
 
-        // This draws character
         public void drawValues(Graphics g) {
 
             // prints username
@@ -292,35 +289,6 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
             timer.start();
             gamePaused = false;
         }
-
-        public void level() {
-
-            int count = 0;
-
-
-            // This make doodle to jump on the platforms and increases score
-            for (Line line : lines) {
-                if ((x > line.x && x < line.x + line.width) && (y >= line.y && y <= line.y + 10 && dy > 0)) {
-                    // makes sound when doodle touches the platform
-                    if (clip.isRunning() && !gameOver) {
-                        jump.setFramePosition(0);
-                        jump.start();
-                    }
-                    if (count == 100) {
-                        scores += 50;
-                    }
-                    // For orange platforms character jumps higher than green platforms
-                    if (count % 13 == 0 && !gameOver) dy = -40;
-                    else if (!gameOver) dy = -20;
-                }
-                count++;
-
-            }
-
-            // It shows the changes about looking of the game
-            drawPanel.repaint();
-        }
-
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -390,16 +358,6 @@ public class DoodleJump extends JFrame implements MouseListener, KeyListener {
 
             if (keycode == KeyEvent.VK_LEFT) {
                 x -= 40;
-            }
-
-            // mute the sound if unmuted
-            if (keycode == KeyEvent.VK_M) {
-                clip.stop();
-            }
-
-            // unmute the sound if muted
-            if (keycode == KeyEvent.VK_U) {
-                clip.start();
             }
 
             if ((e.getKeyCode() == KeyEvent.VK_P) && (!gamePaused)) {

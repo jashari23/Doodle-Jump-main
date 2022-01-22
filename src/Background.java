@@ -8,15 +8,13 @@ public class Background extends JFrame {
     private int cx = 80;
     private int cy = 350;
 
-
     private JPanel panel1;
     private JPanel panel2;
-
 
     public Background() {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(417, 626);
-        ImageIcon icon = new ImageIcon("C:\\Users\\jjash\\Desktop\\Doodle-Jump-main\\images\\hintergrund-options.jpg");
+        ImageIcon icon = new ImageIcon("images/hintergrund-options.jpg");
         JLabel l1 = new JLabel(icon);
         frame.add(l1); // Label hinzufügen
         frame.setVisible(true);

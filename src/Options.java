@@ -19,7 +19,7 @@ public class Options extends JFrame{
     public Options() {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(417, 626);
-        ImageIcon icon = new ImageIcon("C:\\Users\\jjash\\Desktop\\Doodle-Jump-main\\images\\hintergrund-options.jpg");
+        ImageIcon icon = new ImageIcon("images/hintergrund-options.jpg");
         JLabel l1 = new JLabel(icon);
         frame.add(l1); // Label hinzufügen
         frame.setVisible(true);
@@ -42,6 +42,7 @@ public class Options extends JFrame{
         frame.add(panel1);
         panel1.add(b);
         panel1.setBounds(bx, by, 240, 65);
+
         b.addActionListener((ActionEvent e) -> {
             new Background();
             panel1.setVisible(true);
